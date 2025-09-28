@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+x:Class="CalculatorApp.MainPage"
+xmlns:local="clr-namespace:CalculatorApp"
+BackgroundColor="{StaticResource Bg}">
+    <Grid RowDefinitions="Auto, *">
+        <!-- Display -->
+        <Grid Padding="24,48,24,8">
+            <VerticalStackLayout Spacing="4">
+                <Label x:Name="ExprLabel" Style="{StaticResource DisplayText}" FontSize="18" Opacity="0.6" />
+                <Label x:Name="DisplayLabel" Style="{StaticResource DisplayText}" Text="0"/>
+            </VerticalStackLayout>
+        </Grid>
+
+
+        <!-- Keypad -->
+        <Grid Grid.Row="1" Style="{StaticResource Keypad}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!-- Row 1: AC/C, 1/x, %, ÷ -->
+            <Button x:Name="BtnClear" Grid.Row="0" Grid.Column="0" Text="AC" Style="{StaticResource FuncBtn}" Clicked="OnClear"/>
+            <Button Grid.Row="0" Grid.Column="1" Text="1/x" Style="{StaticResource FuncBtn}" Clicked="OnReciprocal"/>
+            <Button Grid.Row="0" Grid.Column="2" Text="%" Style="{StaticResource FuncBtn}" Clicked="OnPercent"/>
+            <Button x:Name="BtnDiv" Grid.Row="0" Grid.Column="3" Text="÷" Style="{StaticResource OpBtn}" Clicked="OnOperator"/>
+
+
+            <!-- Row 2: 7 8 9 × -->
+            <Button Grid.Row="1" Grid.Column="0" Text="7" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="8" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button Grid.Row="1" Grid.Column="2" Text="9" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button x:Name="BtnMul" Grid.Row="1" Grid.Column="3" Text="×" Style="{StaticResource OpBtn}" Clicked="OnOperator"/>
+
+
+            <!-- Row 3: 4 5 6 − -->
+            <Button Grid.Row="2" Grid.Column="0" Text="4" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button Grid.Row="2" Grid.Column="1" Text="5" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button Grid.Row="2" Grid.Column="2" Text="6" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button x:Name="BtnSub" Grid.Row="2" Grid.Column="3" Text="−" Style="{StaticResource OpBtn}" Clicked="OnOperator"/>
+
+
+            <!-- Row 4: 1 2 3 + -->
+            <Button Grid.Row="3" Grid.Column="0" Text="1" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button Grid.Row="3" Grid.Column="1" Text="2" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button Grid.Row="3" Grid.Column="2" Text="3" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button x:Name="BtnAdd" Grid.Row="3" Grid.Column="3" Text="+" Style="{StaticResource OpBtn}" Clicked="OnOperator"/>
+
+
+            <!-- Row 5: +/- 0 . = -->
+            <Button Grid.Row="4" Grid.Column="0" Text="±" Style="{StaticResource FuncBtn}" Clicked="OnToggleSign"/>
+            <Button Grid.Row="4" Grid.Column="1" Text="0" Style="{StaticResource DigitBtn}" Clicked="OnDigit"/>
+            <Button Grid.Row="4" Grid.Column="2" Text="." Style="{StaticResource DigitBtn}" Clicked="OnDecimal"/>
+            <Button x:Name="BtnEq" Grid.Row="4" Grid.Column="3" Text="=" Style="{StaticResource OpBtn}" Clicked="OnEquals"/>
+        </Grid>
+    </Grid>
+</ContentPage>
